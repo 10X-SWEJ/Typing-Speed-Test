@@ -17,11 +17,11 @@ const GeneratedText = ({
                   className={`
                   ${letter === " " ? "mx-1" : ""} ${
                      size === -1
-                        ? "text-sm"
+                        ? "text-md"
                         : size === 1
-                        ? "text-xl"
-                        : "text-md"
-                  } transition-[font-size] duration-500`}
+                        ? "text-lg"
+                        : "text-2xl"
+                  } transition-[font-size] duration-500 text-gray-300`}
                >
                   {letter}
                </p>

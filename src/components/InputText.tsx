@@ -1,36 +1,53 @@
 import { Fragment } from "react/jsx-runtime";
+import { useInput } from "../hooks/useInput";
 
 const InputText = ({
    size,
    className,
-   text,
+   generatedText,
 }: {
    size: any;
    className: any;
-   text: string[];
+   generatedText: string[];
 }) => {
-   const test = "The city buzzed with life as".split("");
+   const userInputText = useInput();
+
    return (
       <div className={`${className}`}>
-         {test.map((letter, index) => (
+         {userInputText.map((letter, index) => (
             <Fragment key={letter + index}>
                <p
                   className={`
-                  ${letter === " " ? "mx-1" : ""} ${
+                  ${
+                     letter === generatedText[index]
+                        ? "text-green-400"
+                        : "text-red-500"
+                  }
+                  ${
+                     letter === " " && generatedText[index] === " "
+                        ? "mx-1"
+                        : ""
+                  } ${
                      size === -1
-                        ? "text-sm"
+                        ? "text-md"
                         : size === 1
-                        ? "text-xl"
-                        : "text-md"
-                  } transition-[font-size] duration-500 text-purple-500`}
+                        ? "text-lg"
+                        : "text-2xl"
+                  } transition-[font-size] duration-500`}
                >
-                  {letter}
+                  {letter === " " && generatedText[index] !== " " ? (
+                     generatedText[index]
+                  ) : generatedText[index] === " " && letter !== " " ? (
+                     <div className="w-2 h-5 bg-red-500" />
+                  ) : (
+                     generatedText[index]
+                  )}
                </p>
             </Fragment>
          ))}
          <div
             aria-hidden={true}
-            className="w-[3px] h-5 mt-1 bg-purple-500 inline-block animate-cursor"
+            className="w-[2px] h-7 mt-1 bg-purple-500 inline-block animate-cursor"
          />
       </div>
    );
