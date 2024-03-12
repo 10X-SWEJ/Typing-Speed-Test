@@ -1,16 +1,18 @@
 import { Fragment } from "react/jsx-runtime";
-import { useInput } from "../hooks/useInput";
 
 const InputText = ({
    size,
    className,
    generatedText,
+   userInputText
 }: {
    size: any;
    className: any;
    generatedText: string[];
+   userInputText: string[];
 }) => {
-   const userInputText = useInput();
+   
+   
 
    return (
       <div className={`${className}`}>

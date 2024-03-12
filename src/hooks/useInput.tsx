@@ -4,7 +4,8 @@ export const useInput = function () {
    const [typedWord, setTypedWord] = useState<string[]>([]);
 
    function handleKeydown(e: KeyboardEvent) {
-      if (e.key.match(/^[A-Za-z\s,.'"]$/))
+      // /^[A-Za-z\s,.'"]$/
+      if (e.key.match(/^[a-zA-Z0-9"'\-,:'.]+$/))
          setTypedWord((typedWord) => [...typedWord, e.key]);
    }
 

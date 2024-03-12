@@ -3,7 +3,7 @@ import GeneratedText from "./GeneratedText";
 import InputText from "./InputText";
 import { Text } from "../data/text";
 
-export const TextContainer = function () {
+export const TextContainer = function ({ userInputText }: any) {
    const [size, setSize] = useState(0);
 
    const className =
@@ -29,7 +29,12 @@ export const TextContainer = function () {
          </div>
          <div className="relative bg-slate-900 p-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 to-slate-900 rounded-[inherit] min-h-[300px]">
             <GeneratedText className={className} text={Text} size={size} />
-            <InputText className={className} generatedText={Text} size={size} />
+            <InputText
+               className={className}
+               generatedText={Text}
+               size={size}
+               userInputText={userInputText}
+            />
          </div>
       </>
    );
